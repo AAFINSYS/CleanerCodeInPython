@@ -1,6 +1,6 @@
 import unittest
 
-from leaderboard import *
+from LeaderBoard import *
 
 # Test Data found via http://en.wikipedia.org/wiki/2015_Formula_One_season
 driver1 = Driver(name="Nico Rosberg", country="DE")

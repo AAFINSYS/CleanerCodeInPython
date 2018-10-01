@@ -1,12 +1,12 @@
 import unittest
 
-from LeaderBoard import *
+from RefactoringKata.LeaderBoard.LeaderBoard import Leaderboard, Driver, SelfDrivingCar, Race
 
 # Test Data found via http://en.wikipedia.org/wiki/2015_Formula_One_season
 driver1 = Driver(name="Nico Rosberg", country="DE")
 driver2 = Driver(name="Lewis Hamilton", country="UK")
 driver3 = Driver(name="Sebastian Vettel", country="DE")
-driver4 = SelfDrivingCar(algorithm_version = "1.2", company="Acme")
+driver4 = SelfDrivingCar(algorithm_version ="1.2", company="Acme")
 
 race1 = Race("Australian Grand Prix", [driver1, driver2, driver3])
 race2 = Race("Malaysian Grand Prix", [driver3, driver2, driver1])
@@ -25,7 +25,7 @@ class LeaderboardTest(unittest.TestCase):
         self.assertEquals("Lewis Hamilton", sample_leaderboard1.driver_rankings()[0])
 
     def test_driver_points(self):
-    	self.assertEquals(18+18+25, sample_leaderboard1.driver_points()["Lewis Hamilton"])
+        self.assertEquals(18+18+25, sample_leaderboard1.driver_points()["Lewis Hamilton"])
 
 class RaceTest(unittest.TestCase):
 

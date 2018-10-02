@@ -3,7 +3,7 @@ import unittest
 class Test_LearningListsInTDD(unittest.TestCase):
     def test_shouldReturnZeroSize_When_EmptyListIsAskedForItsLength(self):
         myEmptyList = list()
-        actual  = len(myEmptyList)
+        actual = len(myEmptyList)
 
         self.assertEqual(actual, len(myEmptyList))
 

@@ -1,11 +1,55 @@
 import unittest
 
+
 class Test_LearningListsInTDD(unittest.TestCase):
     def test_shouldReturnZeroSize_When_EmptyListIsAskedForItsLength(self):
         myEmptyList = list()
         actual = len(myEmptyList)
 
         self.assertEqual(actual, len(myEmptyList))
+
+    def test_shouldReturnAnUpdatedListWithAnAdditionnalElement_When_AnElementIsInsertedInAList(self):
+        actual = [2, 3, 4, 5]
+
+        actual.insert(0, 1)
+
+        self.assertListEqual(actual, [1, 2, 3, 4, 5])
+
+    def test_shouldReturnAListOfTheFiveFirstIntegers_When_AnListOfFfFiveZeroIsModified(self):
+        actual = [0, 0, 0, 0, 0]
+
+        actual[0] = 1
+        actual[1] = 2
+        actual[2] = 3
+        actual[3] = 4
+        actual[4] = 5
+
+        self.assertListEqual(actual, [1, 2, 3, 4, 5])
+
+    def test_should_ReturnAListOfOnes_When_AlistOfSeveralDifferentIntegersIsInInput(self):
+        actual = [2, 1, 1, 3, 2, 1, 1, 9]
+
+        actual.remove(2)
+        actual.remove(3)
+        actual.remove(2)
+        actual.remove(9)
+
+        self.assertListEqual(actual, [1, 1, 1, 1])
+
+    def test_shouldReturnAListOfIntegers_When_A_ListContainingIntegersAndAStringAsTheLastElementIsProcessed(self):
+        actual = [5, 10, 15, "ToPop"]
+
+        popped_item = actual.pop()
+
+        self.assertEqual(popped_item, "ToPop")
+        self.assertListEqual(actual, [5, 10, 15])
+
+    def test_shouldRemoveTheThirdElementInAList_When_AListOfSixElementsIsProcessed(self):
+        actual = [1, 4, "OK", 7, "KO", 2]
+
+        del actual[2]
+
+        self.assertListEqual(actual, [1, 4, 7, "KO", 2])
 
     def test_shouldReturnASubListOfItemsFromTheSecondToTheFifth_When_AListOfTenItemsIsSlicedBetweenTheSecondAndTheFifthItems(self):
         actual = []

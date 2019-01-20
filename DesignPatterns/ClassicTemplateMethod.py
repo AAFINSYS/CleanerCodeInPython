@@ -36,6 +36,7 @@ class Sibling1(Algorithm):
     def specific_processing_2(self):
         return "_siblingClass1Method2"
 
+
 class Sibling2(Algorithm):
     def specific_processing_1(self):
         return "_SiblingClass2Method1"
@@ -50,7 +51,7 @@ class Test_Temp1lateMethodDesignPattern(unittest.TestCase):
 
         self.assertEqual(actual, "TemplateMethod_SiblingClass1Method1_siblingClass1Method2")
 
-    def test_shouldReturnSiblingClassResult_When_CallingTemplateMethodOnSiblingClass(self):
+    def test_shouldReturnSiblingClassResult_When_CallingTemplateMethodOnSecondSiblingClass(self):
         sib1 = Sibling2()
         actual = sib1.template_method()
 

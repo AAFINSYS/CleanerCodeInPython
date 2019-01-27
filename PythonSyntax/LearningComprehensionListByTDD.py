@@ -1,7 +1,7 @@
 import unittest
 
 class Test_LearningComprehensionListByTDD(unittest.TestCase):
-    def test_shouldReturnListOfIntergersUpToTen_When_UsingComprensionListOnARange(self):
+    def test_shouldReturnListOfIntegersUpToTen_When_UsingComprensionListOnARange(self):
         actual = [x for x in range(11)]
 
         self.assertListEqual(actual, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])

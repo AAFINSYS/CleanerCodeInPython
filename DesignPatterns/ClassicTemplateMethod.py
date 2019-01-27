@@ -16,7 +16,7 @@ class Algorithm(ABC):
         return result0 + result3 + result1 + result2
 
     def __private_method(self):
-        """Protected operation. CAN'T overriden."""
+        """Protected operation. CAN'T be overriden."""
         this_method_name = sys._getframe().f_code.co_name
         return this_method_name
 
@@ -59,13 +59,13 @@ class Test_Temp1lateMethodDesignPattern(unittest.TestCase):
         sib1 = Sibling1()
         actual = sib1.template_method()
 
-        self.assertEqual(actual, "__private_method_TemplateMethod_SiblingClass1Method1_siblingClass1Method2")
+        self.assertEqual(actual, "...")
 
     def test_shouldReturnSiblingClassResult_When_CallingTemplateMethodOnSecondSiblingClass(self):
         sib1 = Sibling2()
         actual = sib1.template_method()
 
-        self.assertEqual(actual, "__private_method_TemplateMethod_SiblingClass2Method1_siblingClass2Method2")
+        self.assertEqual(actual, "...")
 
 if __name__ == "__main__":
     unittest.main()

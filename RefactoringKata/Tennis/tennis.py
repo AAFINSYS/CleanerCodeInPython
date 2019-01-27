@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 class TennisGame1:
     def __init__(self, player1Name, player2Name):

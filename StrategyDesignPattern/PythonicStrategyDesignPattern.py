@@ -30,7 +30,7 @@ class Order:
         if self.promotion is None:
             discount = 0
         else:
-            discount = self.promotion(self)  # <1>
+            discount = self.promotion(self)
         return self.total() - discount
 
     def __repr__(self):

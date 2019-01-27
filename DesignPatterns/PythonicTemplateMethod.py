@@ -54,13 +54,13 @@ class Test_Temp1lateMethodDesignPattern(unittest.TestCase):
         sib1 = Sibling1()
         actual = sib1.template_method()
 
-        self.assertEqual(actual, "__private_method_TemplateMethod_SiblingClass1Method1_siblingClass1Method2")
+        self.assertEqual(actual, "...")
 
     def test_shouldReturnSiblingClassResult_When_CallingTemplateMethodOnSecondSiblingClass(self):
         sib1 = Sibling2()
         actual = sib1.template_method()
 
-        self.assertEqual(actual, "__private_method_TemplateMethod_SiblingClass2Method1_siblingClass2Method2")
+        self.assertEqual(actual, "...")
 
 if __name__ == "__main__":
     unittest.main()

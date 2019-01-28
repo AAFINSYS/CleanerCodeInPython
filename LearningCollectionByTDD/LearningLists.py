@@ -77,7 +77,7 @@ class Test_LearningListsInTDD(unittest.TestCase):
 
         self.assertListEqual(actual, [0, 1, 2])
 
-    def test_shouldReturnFirstFourItems_When_AListOfEightItemsIsSlicedForItsFirstFourItems(self):
+    def test_shouldReturnLastFourItems_When_AListOfEightItemsIsSlicedForItsFirstFourItems(self):
         actual = [x for x in range(8)]
 
         actual = actual[-4:]

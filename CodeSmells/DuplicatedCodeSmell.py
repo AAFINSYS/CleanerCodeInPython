@@ -19,7 +19,7 @@ class FizzBuzz(object):
 
 
 class Test_FizzBuzz(unittest.TestCase):
-    def test_shouldReurnnumber_When_InputNumberIsRegular(self):
+    def test_shouldReturnnumber_When_InputNumberIsRegular(self):
         actual = FizzBuzz.process(1)
 
         self.assertEqual(actual, "1")

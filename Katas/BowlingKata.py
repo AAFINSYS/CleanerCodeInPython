@@ -23,33 +23,13 @@ import unittest
 class Game(object):
 
     def __init__(self):
-        # this array contains each roll score (the number of pins that are down after the ball has rolled)
-        self.my_private_array = []
+        pass
 
     def roll(self, pins):
-        self.my_private_array.append(pins)
+        pass
 
-    def score(self):
-        # score of the bowling game
-        return_result = 0
-        # index of the current frame
-        current_index = 0
-
-        # looping of all the 10 frames
-        for current_iteration in range(10):
-            # testing for a strike
-            if self.my_private_array[current_index] == 10:
-                return_result += 10 + self.my_private_array[current_index + 1] + self.my_private_array[current_index + 2]
-                current_index += 1
-            # testing for a spare
-            elif self.my_private_array[current_index] + self.my_private_array[current_index+1] == 10:
-                return_result += 10 + self.my_private_array[current_index + 2]
-                current_index += 2
-            # no strike, no spare (too bad for you)
-            else:
-                return_result += self.my_private_array[current_index] + self.my_private_array[current_index + 1]
-                current_index += 2
-        return return_result
+    def total_score(self):
+        return 0
 
 
 class GameTest(unittest.TestCase):
@@ -59,42 +39,42 @@ class GameTest(unittest.TestCase):
 
     def test_gutter_game(self):
         self._roll_many(0, 20)
-        self.assertEqual(0, self.game.score())
+        self.assertEqual(0, self.game.total_score())
 
     def test_all_ones(self):
         self._roll_many(1, 20)
-        self.assertEqual(20, self.game.score())
+        self.assertEqual(20, self.game.total_score())
 
     def test_one_spare(self):
         self._roll_spare()
         self.game.roll(3)
         self._roll_many(0, 17)
-        self.assertEqual(16, self.game.score())
+        self.assertEqual(16, self.game.total_score())
 
     def test_one_strike(self):
         self.game.roll(10)
         self.game.roll(3)
         self.game.roll(4)
         self._roll_many(0, 16)
-        self.assertEqual(24, self.game.score())
+        self.assertEqual(24, self.game.total_score())
 
     def test_perfect_game(self):
         self._roll_many(10, 12)
-        self.assertEqual(300, self.game.score())
+        self.assertEqual(300, self.game.total_score())
 
     def test_simple_game(self):
         for pins in [1, 4, 4, 5, 6, 4, 5, 5,
                      10, 0, 1, 7, 3, 6, 4, 10, 2, 8, 6]:
             self.game.roll(pins)
-        self.assertEqual(133, self.game.score())
+        self.assertEqual(133, self.game.total_score())
 
     def _roll_many(self, pins, num):
         for i in range(num):
             self.game.roll(pins)
 
     def _roll_spare(self):
-        self.game.roll(8)
-        self.game.roll(2)
+        self.game.roll(5)
+        self.game.roll(5)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 import unittest
 
 
-def manualIteration(param):
+def manual_iteration(param):
     manual_iter = iter(param)
 
     first_value = manual_iter.__next__()

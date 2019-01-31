@@ -56,5 +56,34 @@ class Test_FunctionAndReturnValues(unittest.TestCase):
         self.assertListEqual(second_return_value, ["France", "Germany"])
 
 
+def outterfunction(innerfunc):
+    return innerfunc()
+
+
+def innerfunction():
+    return "return from inner function"
+
+
+def returnfunction():
+    return "return value from returned Function"
+
+
+def functionreturningafunction():
+    return returnfunction
+
+
+class TestPassingAndReturningFunction(unittest.TestCase):
+    def test_should_return_the_result_from_a_function_when_that_funcrion_is_passed_as_argument_to_another_function(self):
+        actual = outterfunction(innerfunction)
+
+        self.assertEqual(actual, "return from inner function")
+
+    def test_should_return_value_from_a_function_returned_from_a_function_when_a_function_returns_a_function(self):
+        return_function = functionreturningafunction()
+
+        actual = return_function()
+
+        self.assertEqual(actual, "return value from returned Function")
+
 if __name__ == "__main__":
     unittest.main()

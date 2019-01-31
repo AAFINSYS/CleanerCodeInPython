@@ -38,7 +38,16 @@ class ClassToCopyWithCustomDeepCopy(object):
         return ClassToCopyWithCustomShallowCopy(copy.deepcopy(self.instanceArray), external_id=self.external_id+1)
 
 
+class ClassWithCustomDel(object):
+    classMessage = "No Destruction yet"
+
+    def __del__(self):
+        ClassWithCustomDel.classMessage = "Deleted"
+
 class TestClassesAndObjects(unittest.TestCase):
+    def setUp(self):
+        ClassWithCustomDel.classMessage = "No Destruction yet"
+
     def test_should_return_instance_value_when_object_is_initialized_in_constructor(self):
         actual = SimpleClass(12)
 
@@ -109,6 +118,25 @@ class TestClassesAndObjects(unittest.TestCase):
         self.assertNotEqual(original_instance.external_id, cloned_instance.external_id)
 
         self.assertNotEqual(id(original_instance), id(cloned_instance))
+
+    def test_should_alter_Class_information_when_an_instance_is_deleted(self):
+        self.assertEqual(ClassWithCustomDel.classMessage, "No Destruction yet")
+
+        actual = ClassWithCustomDel()
+
+        del actual
+
+        self.assertEqual(ClassWithCustomDel.classMessage, "Deleted")
+
+    def test_should_alter_Class_information_when_an_instance_goes_out_of_scope(self):
+        self.assertEqual(ClassWithCustomDel.classMessage, "No Destruction yet")
+
+        self.instanciateClass()
+
+        self.assertEqual(ClassWithCustomDel.classMessage, "Deleted")
+
+    def instanciateClass(self):
+        actual = ClassWithCustomDel()
 
 
 if __name__ == "__main__":

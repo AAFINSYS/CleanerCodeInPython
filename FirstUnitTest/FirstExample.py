@@ -5,7 +5,7 @@ def get_a_string():
     return "what you see is what you get"
 
 
-class Test_FirstClass(unittest.TestCase):
+class TestFirstClass(unittest.TestCase):
     def test_shouldAssert_When_InputStringIsComparedToTheTargetString(self):
         actual = get_a_string()
 

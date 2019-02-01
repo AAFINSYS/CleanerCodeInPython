@@ -46,6 +46,18 @@ def always_raising_exception_array_access(index):
     finally:
         raise RuntimeError
 
+def misleading_exception_array_access(a, b):
+    try:
+        my_array = [0, 1, 2, 3]
+
+        index = int(a / b)
+
+        return my_array[index]
+    except IndexError:
+        raise ZeroDivisionError
+    except ZeroDivisionError:
+        raise IndexError
+
 
 class TestExceptions(unittest.TestCase):
     def test_should_raise_an_index_error_when_access_for_an_array_out_of_its_bounds(self):
@@ -67,6 +79,11 @@ class TestExceptions(unittest.TestCase):
     def test_should_raise_exception_in_any_case_when_an_exception_is_caught(self):
         self.assertRaises(RuntimeError, always_raising_exception_array_access,10)
         self.assertRaises(RuntimeError, always_raising_exception_array_access,0)
+
+    def test_should_not_raise_the_correct_exception_when_IndexError_orZeroDivisionError_are_raised(self):
+        self.assertRaises(ZeroDivisionError, misleading_exception_array_access, 10, 1)
+        self.assertRaises(IndexError, misleading_exception_array_access,10, 0)
+
 
 if __name__ == "__main__":
     unittest.main()

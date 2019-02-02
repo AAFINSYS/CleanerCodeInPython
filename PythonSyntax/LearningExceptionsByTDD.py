@@ -80,10 +80,42 @@ class TestExceptions(unittest.TestCase):
         self.assertRaises(RuntimeError, always_raising_exception_array_access,10)
         self.assertRaises(RuntimeError, always_raising_exception_array_access,0)
 
-    def test_should_not_raise_the_correct_exception_when_IndexError_orZeroDivisionError_are_raised(self):
+    def test_should_not_raise_the_correct_exception_when_IndexError_or_ZeroDivisionError_are_raised(self):
         self.assertRaises(ZeroDivisionError, misleading_exception_array_access, 10, 1)
         self.assertRaises(IndexError, misleading_exception_array_access,10, 0)
 
+    def test_should_catch_a_specific_exception_when_only_most_general_exception_is_expected(self):
+        self.assertRaises(Exception, always_raising_exception_array_access,10)
+
+
+class MyCustomException(Exception):
+    pass
+
+
+class MyCustomExceptionWithDetails(Exception):
+    def __init__(self):
+        Exception.__init__(self, "My Custom Exception message")
+
+
+def custom_exception_raising_function():
+    raise MyCustomException
+
+
+def custom_exception_catching_function():
+    try:
+        raise MyCustomExceptionWithDetails
+    except MyCustomExceptionWithDetails as current_exception:
+        return str(current_exception)
+
+
+class TestCustomException(unittest.TestCase):
+    def test_should_raise_custom_exception_when_calling_some_function(self):
+        self.assertRaises(MyCustomException, custom_exception_raising_function)
+
+    def test_should_return_message_exception_when_calling_some_function(self):
+        actual = custom_exception_catching_function()
+
+        self.assertEqual(actual, "My Custom Exception message")
 
 if __name__ == "__main__":
     unittest.main()

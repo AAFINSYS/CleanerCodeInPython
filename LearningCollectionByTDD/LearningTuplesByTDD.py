@@ -27,6 +27,14 @@ class TestTuples(unittest.TestCase):
         self.assertEqual(actual2, "second value")
         self.assertEqual(actual3, "third value")
 
+    def test_should_unpack_first_and_last_andthrow_away_other_values_when_unpacking_from_a_tuple(self):
+        input_tuple = "France", "Italy", "Spain", "Great Britain", "Russia"
+
+        first_value, *_, last_value = input_tuple
+
+        self.assertEqual(first_value, "France")
+        self.assertEqual(last_value, "Russia")
+        self.assertListEqual(_, ["Italy", "Spain", "Great Britain"])
 
 if __name__ == "__main__":
     unittest.main()

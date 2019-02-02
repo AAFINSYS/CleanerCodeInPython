@@ -135,7 +135,8 @@ class TestClassesAndObjects(unittest.TestCase):
 
         self.assertEqual(ClassWithCustomDel.classMessage, "Deleted")
 
-    def instanciateClass(self):
+    @staticmethod
+    def instanciateClass():
         actual = ClassWithCustomDel()
 
 

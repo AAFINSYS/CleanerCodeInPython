@@ -52,7 +52,7 @@ class TestLearningInheritanceByTDD(unittest.TestCase):
         self.assertEqual(child_instance.base_class_data, 100)
         self.assertEqual(child_instance.child_class_data, 200)
 
-    def test_should_get_child_instance_data_when_some_date_is_init_at_children_level(self):
+    def test_should_get_child_instance_data_when_some_date_is_init_at_children_level_and_calls_super(self):
         child_instance = AnotherChildClass()
 
         self.assertEqual(child_instance.base_class_data, 50)

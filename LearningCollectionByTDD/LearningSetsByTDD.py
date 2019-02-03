@@ -23,13 +23,13 @@ class TestSet(unittest.TestCase):
 
         self.assertEqual(actual, 5)
 
-    def test_should_return_an_intersection_of_sets_whe_two_distinct_sets_are_intersacted(self):
+    def test_should_return_an_intersection_of_sets_whe_two_distinct_sets_are_intersected(self):
         my_first_own_set = {"car", "bike", "boat", "train", "motorbike"}
         my_second_own_set = {"plane", "skateboard", "train", "motorbike"}
 
         actual = my_first_own_set.intersection(my_second_own_set)
 
-        self.assertDictEqual(len(actual), 2)
+        self.assertEqual(len(actual), 2)
 
 if __name__ == "__main__":
     unittest.main()

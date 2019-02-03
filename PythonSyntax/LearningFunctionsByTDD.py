@@ -73,7 +73,7 @@ def functionreturningafunction():
 
 
 class TestPassingAndReturningFunction(unittest.TestCase):
-    def test_should_return_the_result_from_a_function_when_that_funcrion_is_passed_as_argument_to_another_function(self):
+    def test_should_return_the_result_from_a_function_when_that_function_is_passed_as_argument_to_another_function(self):
         actual = outterfunction(innerfunction)
 
         self.assertEqual(actual, "return from inner function")

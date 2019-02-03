@@ -46,6 +46,7 @@ def always_raising_exception_array_access(index):
     finally:
         raise RuntimeError
 
+
 def misleading_exception_array_access(a, b):
     try:
         my_array = [0, 1, 2, 3]

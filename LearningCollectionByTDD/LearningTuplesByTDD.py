@@ -2,7 +2,7 @@ import unittest
 
 
 class TestTuples(unittest.TestCase):
-    def test_should_return_third_element_of_a_tuple_when_a_tuple_of_four_elements_is_retrieved(self):
+    def test_should_return_third_element_of_a_tuple_when_a_tuple_of_four_elements_is_in_input(self):
         current_tuple = (1, 4, "third value of the tuple")
 
         actual = current_tuple[2]

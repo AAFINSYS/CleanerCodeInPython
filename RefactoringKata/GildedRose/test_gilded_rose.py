@@ -36,7 +36,7 @@ class GildedRoseTest(unittest.TestCase):
 
         self.assertEqual(items[0].quality, 0)
 
-    def test_should_increase_the_quality_of_an_aged_brie_by_two_when_a_day_goes_by(self):
+    def test_should_increase_the_quality_of_an_aged_brie_by_one_when_a_day_goes_by(self):
         items = [Item("Aged Brie", sell_in=5, quality=15)]
 
         gilded_rose = GildedRose(items)
